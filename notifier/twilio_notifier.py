@@ -7,14 +7,14 @@ class TwilioNotifier:
 
     def __init__(
         self,
-        username=os.getenv("TWILIO_ACCOUNT_SID"),
-        password=os.getenv("TWILIO_AUTH_TOKEN"),
-        from_number=FROM_NUMBER,
+        username: str = os.getenv("TWILIO_ACCOUNT_SID"),
+        password: str = os.getenv("TWILIO_AUTH_TOKEN"),
+        from_number: str = FROM_NUMBER,
     ):
         self._client = Client(username, password)
         self._from_number = from_number
 
-    def notify(self, to_number, message):
+    def notify(self, to_number: str, message: str):
         self._client.calls.create(
             twiml=f"<Response><Say>{message}</Say</Response>",
             to=self._normalise_phone_number(to_number),
