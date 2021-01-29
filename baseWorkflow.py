@@ -20,8 +20,6 @@ def check_store(store: Shop):
     response = requests.get(store.url, headers=headers)
     if response.ok:
         html = BeautifulSoup(response.text, "html.parser")
-        print(store.out_of_stock_elements)
-        exit
         for out_of_stock_element in store.out_of_stock_elements:
             text_search = html(text=lambda t: out_of_stock_element in t) or []            
             element_search = html.find_all(title=out_of_stock_element)
