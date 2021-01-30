@@ -1,11 +1,11 @@
-DEFAULT_OUT_OF_STOCK_MESSAGES = ["Out of Stock", "Out of stock", "No stock", "out of stock"]
+DEFAULT_OUT_OF_STOCK_MESSAGES = ["Out of Stock", "Out of stock", "No stock", "out of stock", "OUT OF STOCK", "Out Of Stock"]
 
 class Shop:
     def __init__(self, **params):
         self._name = params["name"]
         self._url = params["url"]
         self._out_of_stock_elements = params.get("out_of_stock_elements", []) + DEFAULT_OUT_OF_STOCK_MESSAGES 
-        self._wait_time = params.get("wait_time", 5)
+        self._wait_time = params.get("wait_time", 30)
         self._enabled = params.get("enabled", False)
 
     @property
