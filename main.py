@@ -31,10 +31,10 @@ if __name__ == "__main__":
     load_dotenv()
     processes = []
     credit_card = CreditCard(
-        os.getenv("JACKS_CREDIT_CARD_NUMBER"),
-        int(os.getenv("JACKS_CREDIT_CARD_EXPIRATION_MONTH")),
-        int(os.getenv("JACKS_CREDIT_CARD_EXPIRATION_YEAR")),
-        int(os.getenv("JACKS_CREDIT_CARD_CVV")),
+        os.getenv("CREDIT_CARD_NUMBER"),
+        int(os.getenv("CREDIT_CARD_EXPIRATION_MONTH")),
+        int(os.getenv("CREDIT_CARD_EXPIRATION_YEAR")),
+        int(os.getenv("CREDIT_CARD_CVV")),
     )
     for store in get_stores():
         p = Process(target=store.run, args=(credit_card,))
