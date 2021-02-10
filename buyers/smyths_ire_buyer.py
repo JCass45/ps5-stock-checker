@@ -1,26 +1,17 @@
 import os
 
 from retrying import retry
-from selenium.common.exceptions import (
-    NoSuchElementException,
-    StaleElementReferenceException,
-)
 from selenium.webdriver.chrome.webdriver import WebDriver as ChromeDriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import Select, WebDriverWait
+from selenium.webdriver.support.ui import WebDriverWait
 
 from buyers.base_buyer import BaseBuyer
 from buyers.models.credit_card import CreditCard
 
 
 class SmythsIreBuyer(BaseBuyer):
-    def __init__(self, driver: ChromeDriver):
-        super().__init__(
-            driver,
-            "https://www.smythstoys.com/ie/en-ie/video-games-and-tablets/playstation-5/playstation-5-consoles/playstation-5-console/p/191259",
-        )
+    def __init__(self, driver: ChromeDriver, product_url: str):
+        super().__init__(driver, product_url)
 
     def buy(self, credit_card: CreditCard):
         self._driver.implicitly_wait(15)
