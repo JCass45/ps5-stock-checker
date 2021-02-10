@@ -16,8 +16,7 @@ class ShopFactory:
         selenium_driver = Chrome(options=opts)
 
         notifier = TwilioNotifier()
-
-        if shop_config.name == "smyths_ire":
-            canary = SmythsIreCanary(notifier, shop_config.url)
-            buyer = SmythsIreBuyer(selenium_driver, shop_config.url)
+        if shop_config["name"] == "smyths_ire":
+            canary = SmythsIreCanary(notifier, shop_config["url"])
+            buyer = SmythsIreBuyer(selenium_driver, shop_config["url"])
             return Shop(canary, buyer, **shop_config)
